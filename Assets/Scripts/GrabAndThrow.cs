@@ -9,6 +9,12 @@ public class GrabAndThrow : MonoBehaviour
 
     private GameObject nearbyObject;
     private GameObject heldObject;
+    private Animator animator;
+    
+    void Awake()
+    {
+        animator = GetComponentInChildren<Animator>();
+    }
 
     public void Interact(InputAction.CallbackContext context)
     {
@@ -50,6 +56,10 @@ public class GrabAndThrow : MonoBehaviour
         heldObject.transform.SetParent(holdPoint);
         heldObject.transform.localPosition = Vector3.zero;
         heldObject.transform.localRotation = Quaternion.identity;
+        if (heldObject.CompareTag("Crop"))
+        {
+            animator.SetTrigger("Interact");
+        }
     }
 
     void Throw()

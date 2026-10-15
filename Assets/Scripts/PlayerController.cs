@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Attack");
         }
     }
+    
 
     void FixedUpdate()
     {
